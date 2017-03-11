@@ -7,17 +7,11 @@ import java.util.List;
  */
 public class Action<T> {
     public String type;
-    public List<String> filter;
 
     private T content;
 
     protected Action(String type, T content) {
-        this(type, null, content);
-    }
-
-    protected Action(String type, List<String> filter, T content) {
         this.type = type;
-        this.filter = filter;
         this.content = content;
     }
 

@@ -2,6 +2,8 @@ package com.example.lib;
 
 import org.junit.Test;
 
+import java.util.Objects;
+
 import static org.junit.Assert.*;
 
 /**
@@ -12,6 +14,32 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
+        Store<Object> store = new Store<Object>() {
+            @Override
+            public Object getState() {
+                return null;
+            }
+
+            @Override
+            public void dispatch(Action action) {
+
+            }
+
+            @Override
+            public void subscribe() {
+
+            }
+
+            @Override
+            public void unSubscribe() {
+
+            }
+        };
+
+        AddTodoActionCreator<String> creator = new AddTodoActionCreator<>();
+        Action action = creator.create("dsa)");
+        store.dispatch(action);
+
         assertEquals(4, 2 + 2);
     }
 }

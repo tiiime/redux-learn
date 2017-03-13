@@ -16,16 +16,16 @@ public abstract class Store<S> implements IDispatcher {
 
     public abstract void unSubscribe(Subscriber subscriber);
 
-    public static <S> CoreStore<S> create(S currentState, IReducer.Reducer<S> reducer, Middleware<S>... middlewares) {
+    public static <S> CoreStore<S> create(S currentState, IReducer<S> reducer, Middleware<S>... middlewares) {
         return new CoreStore<S>(currentState, reducer, middlewares);
     }
-    public static <S> CoreStore<S> create(S currentState, IReducer.Reducer<S> reducer) {
+    public static <S> CoreStore<S> create(S currentState, IReducer<S> reducer) {
         return new CoreStore<S>(currentState, reducer, null);
     }
 
     private static class CoreStore<S> extends Store<S> {
         private List<Subscriber> subscribers = new ArrayList<>();
-        private IReducer.Reducer<S> reducer;
+        private IReducer<S> reducer;
         private S currentState;
         private IDispatcher mDispatcher = new IDispatcher() {
             @Override
@@ -38,7 +38,7 @@ public abstract class Store<S> implements IDispatcher {
             }
         };
 
-        private CoreStore(S currentState, IReducer.Reducer<S> reducer, Middleware<S> ... middlewareArray) {
+        private CoreStore(S currentState, IReducer<S> reducer, Middleware<S> ... middlewareArray) {
             this.reducer = reducer;
             this.currentState = currentState;
 

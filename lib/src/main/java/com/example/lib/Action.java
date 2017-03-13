@@ -1,7 +1,5 @@
 package com.example.lib;
 
-import java.util.List;
-
 /**
  * Created by kang on 17-3-10.
  */

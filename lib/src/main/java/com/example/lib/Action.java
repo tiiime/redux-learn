@@ -16,4 +16,9 @@ public class Action<T> {
     public T getContent() {
         return content;
     }
+
+    @Override
+    public String toString() {
+        return String.format("type: %s ---> %s",type,content.toString());
+    }
 }

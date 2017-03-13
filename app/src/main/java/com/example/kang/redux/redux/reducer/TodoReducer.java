@@ -19,7 +19,7 @@ public class TodoReducer implements IReducer<List<TodoContent>>{
         switch (action.type) {
             case Actions.ADD_TODO_ACTION:
                 retState.add((TodoContent) action.getContent());
-                return retState;
+                break;
             case Actions.TOGGLE_TODO_ACTION:
                 TodoContent content = retState.get((int) action.getContent());
                 if (content.filter == TodoFilter.OVER) {
@@ -27,10 +27,13 @@ public class TodoReducer implements IReducer<List<TodoContent>>{
                 } else if (content.filter == TodoFilter.NEW) {
                     content.filter = TodoFilter.OVER;
                 }
-                return retState;
+                break;
+            case Actions.DELETE_TODO_ACTION:
+                retState.remove((int) action.getContent());
+                break;
             default:
                 return state;
         }
-
+        return retState;
     }
 }

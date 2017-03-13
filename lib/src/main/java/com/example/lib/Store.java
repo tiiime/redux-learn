@@ -42,9 +42,13 @@ public abstract class Store<S> implements IDispatcher {
             this.reducer = reducer;
             this.currentState = currentState;
 
+            if (middlewareArray == null){
+                return;
+            }
+
             IDispatcher dispatcher = mDispatcher;
-            for (Middleware item:middlewareArray){
-                dispatcher = item.dispatch(this, dispatcher);
+            for (int i = 0; i < middlewareArray.length; i++) {
+                dispatcher = middlewareArray[i].dispatch(this, dispatcher);
             }
             mDispatcher = dispatcher;
         }
@@ -66,7 +70,7 @@ public abstract class Store<S> implements IDispatcher {
             subscribers.add(subscriber);
             return new Subscription() {
                 @Override
-                public void unregister() {
+                public void unSubscribe() {
                     subscribers.remove(subscriber);
                 }
             };

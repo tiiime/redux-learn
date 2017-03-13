@@ -5,4 +5,5 @@ package com.example.kang.redux.redux;
  */
 public class   Actions {
 	public static final String ADD_TODO_ACTION = "ADD_TODO_ACTION";
+	public static final String TOGGLE_TODO_ACTION = "TOGGLE_TODO_ACTION";
 }

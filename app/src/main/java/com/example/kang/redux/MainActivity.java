@@ -56,11 +56,9 @@ public class MainActivity extends AppCompatActivity implements Subscriber, Simpl
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TodoContent content = new TodoContent();
-                content.content = hello.getText().toString();
-                content.filter = TodoFilter.NEW;
-
-                store.dispatch(addTodo.create(content));
+                String content = hello.getText().toString();
+                TodoContent todoContent = new TodoContent(content);
+                store.dispatch(addTodo.create(todoContent));
             }
         });
     }

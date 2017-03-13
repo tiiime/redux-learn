@@ -4,21 +4,21 @@ package com.example.kang.redux.models;
  * Created by kang on 17-3-13.
  */
 public class TodoContent {
-    public TodoContent(String content, TodoFilter filter) {
+    public TodoContent(String content, boolean completed) {
         this.content = content;
-        this.filter = filter;
+        this.completed = completed;
     }
 
     public TodoContent(String content) {
         this.content = content;
-        this.filter = TodoFilter.NEW;
+        this.completed = false;
     }
 
     public TodoContent() {
     }
 
     public String content;
-    public TodoFilter filter;
+    public boolean completed;
 
     @Override
     public String toString() {

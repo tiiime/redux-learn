@@ -22,11 +22,7 @@ public class TodoReducer implements IReducer<List<TodoContent>>{
                 break;
             case Actions.TOGGLE_TODO_ACTION:
                 TodoContent content = retState.get((int) action.getContent());
-                if (content.filter == TodoFilter.OVER) {
-                    content.filter = TodoFilter.NEW;
-                } else if (content.filter == TodoFilter.NEW) {
-                    content.filter = TodoFilter.OVER;
-                }
+                content.completed = !content.completed;
                 break;
             case Actions.DELETE_TODO_ACTION:
                 retState.remove((int) action.getContent());

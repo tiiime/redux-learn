@@ -33,14 +33,12 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.SimpleView
     public void onBindViewHolder(SimpleViewHolder holder, int position) {
         TodoContent todoContent = data.get(position);
 
-        switch (todoContent.filter) {
-            case NEW:
-                holder.content.setBackgroundColor(Color.RED);
-                break;
-            case OVER:
-                holder.content.setBackgroundColor(Color.GREEN);
-                break;
+        if (todoContent.completed) {
+            holder.content.setBackgroundColor(Color.GREEN);
+        } else {
+            holder.content.setBackgroundColor(Color.RED);
         }
+
         holder.content.setText(todoContent.content);
 
         holder.toggle.setTag(new ClickInfo(ClickInfo.Type.TOGGLE,position));

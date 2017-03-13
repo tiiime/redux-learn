@@ -11,6 +11,7 @@ import com.example.kang.redux.models.TodoContent;
 import com.example.kang.redux.models.TodoFilter;
 import com.example.kang.redux.models.TodoState;
 import com.example.kang.redux.redux.AddTodoActionCreator;
+import com.example.kang.redux.redux.DeleteTodoActionCreator;
 import com.example.kang.redux.redux.ToggleTodoActionCreator;
 import com.example.kang.redux.redux.middleware.LoggerMiddleware;
 import com.example.kang.redux.redux.reducer.TodoAppReducer;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements Subscriber, Simpl
     private final Store<TodoState> store = Store.create(state, reducer, loggerMiddleware);
 
     private AddTodoActionCreator<TodoContent> addTodo = new AddTodoActionCreator<>();
+    private DeleteTodoActionCreator<Integer> delTodo = new DeleteTodoActionCreator<>();
     private ToggleTodoActionCreator<Integer> toggleTodo = new ToggleTodoActionCreator<>();
 
     private final SimpleAdapter adapter = new SimpleAdapter(store.getState().content);
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements Subscriber, Simpl
         hello = (TextView) findViewById(R.id.hello);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
@@ -71,8 +73,13 @@ public class MainActivity extends AppCompatActivity implements Subscriber, Simpl
 
 
     @Override
-    public void onItemClick(int position) {
+    public void onItemToggle(int position) {
         store.dispatch(toggleTodo.create(position));
+    }
+
+    @Override
+    public void onItemDelete(int position) {
+        store.dispatch(delTodo.create(position));
     }
 
     @Override

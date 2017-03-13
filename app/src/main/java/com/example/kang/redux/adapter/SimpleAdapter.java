@@ -42,8 +42,11 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.SimpleView
                 break;
         }
         holder.content.setText(todoContent.content);
-        holder.toggle.setTag(position);
+
+        holder.toggle.setTag(new ClickInfo(ClickInfo.Type.TOGGLE,position));
+        holder.delete.setTag(new ClickInfo(ClickInfo.Type.DELETE,position));
         holder.toggle.setOnClickListener(this);
+        holder.delete.setOnClickListener(this);
     }
 
     @Override
@@ -53,10 +56,20 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.SimpleView
 
     @Override
     public void onClick(View v) {
-        int position = (int) v.getTag();
-        if (listener != null) {
-            listener.onItemClick(position);
+
+        if (listener == null) {
+            return;
         }
+        ClickInfo info = (ClickInfo) v.getTag();
+        switch (info.type){
+            case TOGGLE:
+                listener.onItemToggle(info.position);
+                break;
+            case DELETE:
+                listener.onItemDelete(info.position);
+                break;
+        }
+
     }
 
     public void setListener(OnItemClick listener) {
@@ -70,16 +83,34 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.SimpleView
 
     public static class SimpleViewHolder extends RecyclerView.ViewHolder {
         public View toggle;
+        public View delete;
         public TextView content;
 
         public SimpleViewHolder(View itemView) {
             super(itemView);
             toggle = itemView.findViewById(R.id.toggle);
+            delete = itemView.findViewById(R.id.delete);
             content = (TextView) itemView.findViewById(R.id.content);
         }
     }
 
     public interface OnItemClick {
-        void onItemClick(int position);
+        void onItemToggle(int position);
+        void onItemDelete(int position);
+    }
+
+    private static class ClickInfo{
+        Type type;
+        int position;
+
+        public ClickInfo(Type type, int position) {
+            this.type = type;
+            this.position = position;
+        }
+
+        enum Type {
+            DELETE,
+            TOGGLE
+        }
     }
 }

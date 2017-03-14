@@ -28,8 +28,27 @@
                 android:layout_height="wrap_content"/>
     </LinearLayout>
 
+
     <android.support.v7.widget.RecyclerView
+            android:layout_weight="1"
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="0dp"/>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <Button
+                android:id="@+id/undo"
+                android:layout_weight="1"
+                android:text="UNDO"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <Button
+                android:id="@+id/redo"
+                android:layout_weight="1"
+                android:text="REDO"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
 </LinearLayout>

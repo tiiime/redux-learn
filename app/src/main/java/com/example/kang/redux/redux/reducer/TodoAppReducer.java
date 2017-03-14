@@ -19,8 +19,8 @@ public class TodoAppReducer implements IReducer<TodoState> {
     @Override
     public TodoState reduce(TodoState state, Action action) {
         switch (action.type){
-            case Actions.ACTION_NOT_RECORD:
-                return (TodoState) action.getContent();
+            case Actions.ACTION_RESET_STATE:
+                return new TodoState((TodoState) action.getContent());
             default:
                 List<TodoContent> contents = todoReducer.reduce(state.content,action);
                 TodoFilter filter = visibilityReducer.reduce(state.filter,action);

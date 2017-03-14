@@ -11,7 +11,7 @@ import com.example.lib.Store;
  */
 public class LoggerMiddleware implements Middleware<TodoState> {
     @Override
-    public IDispatcher dispatch(Store<TodoState> store, final IDispatcher nextDispatcher) {
+    public IDispatcher create(Store<TodoState> store, final IDispatcher nextDispatcher) {
 
         return new IDispatcher() {
             @Override

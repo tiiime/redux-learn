@@ -48,7 +48,7 @@ public abstract class Store<S> implements IDispatcher {
 
             IDispatcher dispatcher = mDispatcher;
             for (int i = 0; i < middlewareArray.length; i++) {
-                dispatcher = middlewareArray[i].dispatch(this, dispatcher);
+                dispatcher = middlewareArray[i].create(this, dispatcher);
             }
             mDispatcher = dispatcher;
         }

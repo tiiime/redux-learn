@@ -1,7 +1,6 @@
 package com.example.kang.redux.redux.reducer;
 
 import com.example.kang.redux.models.TodoContent;
-import com.example.kang.redux.models.TodoFilter;
 import com.example.kang.redux.redux.Actions;
 import com.example.lib.Action;
 import com.example.lib.IReducer;
@@ -17,14 +16,14 @@ public class TodoReducer implements IReducer<List<TodoContent>>{
     public List<TodoContent> reduce(List<TodoContent> state, Action action) {
         List<TodoContent> retState = new ArrayList<>(state);
         switch (action.type) {
-            case Actions.ADD_TODO_ACTION:
+            case Actions.ACTION_ADD_TODO:
                 retState.add((TodoContent) action.getContent());
                 break;
-            case Actions.TOGGLE_TODO_ACTION:
+            case Actions.ACTION_TOGGLE_TODO:
                 TodoContent content = retState.get((int) action.getContent());
                 content.completed = !content.completed;
                 break;
-            case Actions.DELETE_TODO_ACTION:
+            case Actions.ACTION_DELETE_TODO:
                 retState.remove((int) action.getContent());
                 break;
             default:

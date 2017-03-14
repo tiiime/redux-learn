@@ -7,6 +7,6 @@ import com.example.lib.AbsActionCreator;
  */
 public class ToggleTodoActionCreator<T> extends AbsActionCreator<T> {
     public ToggleTodoActionCreator() {
-        super(Actions.TOGGLE_TODO_ACTION);
+        super(Actions.ACTION_TOGGLE_TODO);
     }
 }

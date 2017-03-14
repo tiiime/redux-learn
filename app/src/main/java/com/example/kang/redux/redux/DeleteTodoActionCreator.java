@@ -7,6 +7,6 @@ import com.example.lib.AbsActionCreator;
  */
 public class DeleteTodoActionCreator<T> extends AbsActionCreator<T> {
     public DeleteTodoActionCreator() {
-        super(Actions.DELETE_TODO_ACTION);
+        super(Actions.ACTION_DELETE_TODO);
     }
 }

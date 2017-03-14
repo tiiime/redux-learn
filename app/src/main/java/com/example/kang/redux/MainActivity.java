@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements Subscriber, Simpl
     private final IReducer<TodoState> reducer = new TodoAppReducer();
     private final LoggerMiddleware loggerMiddleware = new LoggerMiddleware();
     private final RedoMiddleware redoMiddleware = new RedoMiddleware();
-    private final Store<TodoState> store = Store.create(state, reducer, redoMiddleware, loggerMiddleware);
+    private final Store<TodoState> store = Store.create(state, reducer, loggerMiddleware, redoMiddleware);
 
     private AddTodoActionCreator<TodoContent> addTodo = new AddTodoActionCreator<>();
     private DeleteTodoActionCreator<Integer> delTodo = new DeleteTodoActionCreator<>();

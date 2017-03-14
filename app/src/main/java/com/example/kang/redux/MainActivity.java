@@ -14,15 +14,20 @@ import com.example.kang.redux.redux.action.AddTodoActionCreator;
 import com.example.kang.redux.redux.action.DeleteTodoActionCreator;
 import com.example.kang.redux.redux.action.RedoActionCreator;
 import com.example.kang.redux.redux.action.ToggleTodoActionCreator;
+import com.example.kang.redux.redux.action.async.AsyncResponseActionCreator;
+import com.example.kang.redux.redux.action.async.SimpleAsyncActionCreator;
 import com.example.kang.redux.redux.middleware.LoggerMiddleware;
 import com.example.kang.redux.redux.middleware.RedoMiddleware;
+import com.example.kang.redux.redux.middleware.ThunkMiddleware;
 import com.example.kang.redux.redux.reducer.TodoAppReducer;
 import com.example.lib.Action;
 import com.example.lib.IReducer;
 import com.example.lib.Store;
 import com.example.lib.Subscriber;
+import io.reactivex.Observable;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements Subscriber, SimpleAdapter.OnItemClick, View.OnClickListener {
     private TodoState state = new TodoState(TodoFilter.ALL, new ArrayList<TodoContent>());
@@ -109,6 +114,11 @@ public class MainActivity extends AppCompatActivity implements Subscriber, Simpl
                 break;
             case R.id.undo:
                 action = RedoActionCreator.createUndoAction();
+                break;
+            case R.id.activity_main:
+                SimpleAsyncActionCreator<Action> asyncActionCreator = new SimpleAsyncActionCreator<>();
+                AsyncResponseActionCreator nextAction = new AsyncResponseActionCreator();
+                action = asyncActionCreator.create(nextAction.create(""));
                 break;
         }
         store.dispatch(action);

@@ -12,4 +12,7 @@ public class   Actions {
 	public static final String ACTION_REDO_TODO = "ACTION_REDO_TODO";
 
 	public static final String ACTION_RESET_STATE = "ACTION_RESET_STATE";
+
+	public static final String ACTION_ASYNC = "ACTION_ASYNC";
+	public static final String ACTION_ASYNC_RESPONSE = "ACTION_ASYNC_RESPONSE";
 }

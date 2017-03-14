@@ -11,5 +11,5 @@ public class   Actions {
 	public static final String ACTION_UNDO_TODO = "ACTION_UNDO_TODO";
 	public static final String ACTION_REDO_TODO = "ACTION_REDO_TODO";
 
-	public static final String ACTION_NOT_RECORD = "ACTION_NOT_RECORD";
+	public static final String ACTION_RESET_STATE = "ACTION_RESET_STATE";
 }

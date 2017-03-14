@@ -1,5 +1,6 @@
-package com.example.kang.redux.redux;
+package com.example.kang.redux.redux.action;
 
+import com.example.kang.redux.redux.Actions;
 import com.example.lib.AbsActionCreator;
 import com.example.lib.Action;
 

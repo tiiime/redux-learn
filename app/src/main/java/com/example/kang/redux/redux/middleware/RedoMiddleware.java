@@ -2,7 +2,7 @@ package com.example.kang.redux.redux.middleware;
 
 import com.example.kang.redux.models.TodoState;
 import com.example.kang.redux.redux.Actions;
-import com.example.kang.redux.redux.ResetStateActionCreator;
+import com.example.kang.redux.redux.action.ResetStateActionCreator;
 import com.example.lib.Action;
 import com.example.lib.IDispatcher;
 import com.example.lib.Middleware;

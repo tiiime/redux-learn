@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class VisibilityReducer implements IReducer<TodoFilter> {
     @Override
-    public TodoFilter reduce(TodoFilter state, Action action) {
+    public TodoFilter reduce(final TodoFilter state, Action action) {
         return state;
     }
 }

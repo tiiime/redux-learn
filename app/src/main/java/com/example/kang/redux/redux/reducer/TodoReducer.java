@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class TodoReducer implements IReducer<List<TodoContent>>{
     @Override
-    public List<TodoContent> reduce(List<TodoContent> state, Action action) {
+    public List<TodoContent> reduce(final List<TodoContent> state, Action action) {
         List<TodoContent> retState = new ArrayList<>(state);
         switch (action.type) {
             case Actions.ACTION_ADD_TODO:

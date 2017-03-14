@@ -17,7 +17,7 @@ public class TodoAppReducer implements IReducer<TodoState> {
     private VisibilityReducer visibilityReducer = new VisibilityReducer();
 
     @Override
-    public TodoState reduce(TodoState state, Action action) {
+    public TodoState reduce(final TodoState state, Action action) {
         switch (action.type){
             case Actions.ACTION_RESET_STATE:
                 return new TodoState((TodoState) action.getContent());
